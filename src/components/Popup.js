@@ -32,10 +32,6 @@ const CloseButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   color: white;
-  border: 2px solid white;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
 `;
 
 const CharacterImage = styled.img`
