@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const FilterContainer = styled.div`
-  width: 96%;
+  width: 92%;
   margin-bottom: 20px;
   padding: 20px;
   background-color: #f2f2f2;
