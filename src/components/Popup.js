@@ -58,7 +58,9 @@ const Popup = ({ character, onClose }) => {
         <CharacterName>{character.name}</CharacterName>
         <CharacterInfo>
           Статус: {character.status} | Пол: {character.gender} | Вид:{" "}
-          {character.species} | Тип: {displayType}
+          {character.species} | Тип: {displayType} | 
+          ID: {character.id} | Происхождение: {character.origin.name} | Местоположение: {character.location.name} | Создан: {character.created} |
+          Эпизодов: {character.episode.length}
         </CharacterInfo>
       </PopupContent>
     </PopupContainer>

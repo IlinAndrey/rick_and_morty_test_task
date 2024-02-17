@@ -42,13 +42,23 @@ const App = () => {
     setSelectedCharacter(character);
   };
 
+  const fetchCharacters = async (url, characters = []) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    const allCharacters = characters.concat(data.results);
+    if (data.info.next) {
+      return fetchCharacters(data.info.next, allCharacters);
+    } else {
+      return allCharacters;
+    }
+  };
+
   useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character")
-      .then((response) => response.json())
-      .then((data) => setCharacters(data.results))
+    fetchCharacters("https://rickandmortyapi.com/api/character")
+      .then((data) => setCharacters(data))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
-
+  
   const handleFilterChange = (filterType, value) => {
     switch (filterType) {
       case "name":
@@ -83,7 +93,9 @@ const App = () => {
 
   return (
     <div>
-      <HeaderName>Персонажи Рика и Морти для тестового задания. Ильин Андрей.</HeaderName>
+      <HeaderName>
+        Персонажи Рика и Морти для тестового задания. Ильин Андрей.
+      </HeaderName>
       <Container>
         <Filter
           nameFilter={nameFilter}
